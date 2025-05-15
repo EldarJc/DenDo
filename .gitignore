@@ -1,0 +1,44 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+
+# Environment
+dendo/.env
+.venv/
+
+# Python
+*.py[cod]
+*$py.class
+
+# Build artifacts
+build/
+dist/
+*.whl
+
+# Poetry metadata
+*.egg-info/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# mypy
+.mypy_cache/
+
+# VS Code
+.vscode/
+
+# Local project files
+dendo/logs/
+dendo/uploads/
+dendo/db_sqlite/
