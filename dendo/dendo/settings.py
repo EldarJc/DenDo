@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -25,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG').lower() == 'true' 
+DEBUG = os.getenv('DEBUG').lower() == 'true'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
@@ -99,6 +100,11 @@ DATABASES = {
     'default': db_config[app_database]
 }
 
+AUTHENTICATION_BACKENDS = [
+    'dendo_users.auth_backends.UsernameOrEmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -146,8 +152,10 @@ MEDIA_URL = '/content/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-log_status = os.getenv('log_lvl', 'INFO').upper()
+AUTH_USER_MODEL = 'dendo_users.CustomUser'
 
+
+log_status = os.getenv('log_lvl', 'INFO').upper()
 
 LOGGING = {
     'version': 1,
