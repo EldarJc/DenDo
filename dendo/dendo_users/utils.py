@@ -25,7 +25,7 @@ class UserHelper:
 
     @staticmethod
     def create_user(request, username, email, password):
-        if re.match(r'^[\w\.-]+@[\w\.-]+\.[a-zA-z]{2,}$', username.strip()):
+        if re.match(r'^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,}$', username.strip()):
             raise ValidationError("Username cannot be an email address.")
 
         elif UserHelper.get_user(username.strip()):
