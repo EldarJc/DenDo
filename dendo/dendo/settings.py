@@ -153,6 +153,7 @@ MEDIA_URL = '/content/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'dendo_users.CustomUser'
+LOGIN_URL = 'dendo_users:login_page'
 
 
 log_status = os.getenv('log_lvl', 'INFO').upper()
