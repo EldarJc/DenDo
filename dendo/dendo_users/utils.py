@@ -1,11 +1,10 @@
 import re
 
-from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db.models import Q
 from django.contrib.auth import login
 from django.core.exceptions import ValidationError
+from django.conf import settings
 
-from dendo.settings import BASE_DIR
 from .models import CustomUser
 
 class UserHelper:    
@@ -18,6 +17,7 @@ class UserHelper:
         user = UserHelper.get_user(username_or_email)
 
         if user and user.check_password(password):
+            user.backend = settings.AUTHENTICATION_BACKENDS[0]
             login(request, user)
             return user
         
